@@ -147,7 +147,7 @@ function App() {
   return (
     <>
       <div className="w-full main">
-        <div className="container mx-auto px-8 xl:px-0">
+        <div className="xl:container mx-auto px-8 xl:px-0">
           <h1 className="text-orange-500 font-semibold text-3xl mt-10">
             Match The Pairs
             <svg
@@ -171,8 +171,12 @@ function App() {
               <path d="M12 12l-8 4.5" />
             </svg>
           </h1>
-          <div className="flex justify-between py-5">
-            <div className="w-2/3 text-xl text-gray-500">
+          <h2 className="text-lg text-gray-300">
+            Flip the cards to find matching pairs. Complete the game in the
+            fastest time!
+          </h2>
+          <div className="md:flex justify-between py-5">
+            <div className="md:w-3/5 text-xl text-gray-300">
               <span className={fastestTime == 0 ? "hidden" : "inline-block"}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -192,10 +196,19 @@ function App() {
                   <path d="M14 4l-9 4l9 4" />
                 </svg>
                 <span className="ml-10">Fastest Winning Time : </span>
-                <span className="font-bold text-blue-600 text-2xl">
+                <span className="font-bold text-blue-500 text-2xl">
                   {fastestTime}
                 </span>{" "}
                 seconds
+              </span>
+              <span className={fastestTime !== 0 ? "hidden" : "inline-block"}>
+                <span className="">
+                  Shuffle the types of card by clicking{" "}
+                  <span className="text-blue-400">'Shuffle'</span>. <br /> Hit
+                  <span className="text-blue-400"> 'Start'</span> when ready. To
+                  stop mid-game, press{" "}
+                  <span className="text-blue-400">'Reset'</span>.
+                </span>
               </span>
               <br />
               {latestTime > 0 ? (
@@ -219,39 +232,17 @@ function App() {
                       <path d="M12 7v5" />
                     </svg>
                     Previous Time :{" "}
-                    <span className="font-bold text-blue-600 text-2xl">
+                    <span className="font-bold text-blue-500 text-2xl">
                       {latestTime}
                     </span>{" "}
                     seconds
                   </span>
-                  <br />
                 </>
               ) : (
                 ""
               )}
-              <span className={isRunning ? "inline-block" : "hidden"}>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="icon icon-tabler icons-tabler-outline icon-tabler-hourglass-empty inline-block w-10 z-10 animate-wheel"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                  <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z" />
-                  <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z" />
-                </svg>
-                Time :{" "}
-                <span className="font-bold text-blue-600 text-2xl">{time}</span>{" "}
-                seconds
-              </span>
             </div>
-            <div className="w-1/3">
+            <div className="md:w-2/5 flex md:justify-end">
               <button
                 className="inline-block mr-3 mt-3 px-3 py-2 rounded bg-blue-500 hover:bg-blue-600 hover:text-white"
                 onClick={() => shuffleCards(getRandom())}
@@ -274,7 +265,7 @@ function App() {
                   <path d="M3 7h3a5 5 0 0 1 5 5a5 5 0 0 0 5 5h5" />
                   <path d="M21 7h-5a4.978 4.978 0 0 0 -3 1m-4 8a4.984 4.984 0 0 1 -3 1h-3" />
                 </svg>
-                Shuffle Type
+                Shuffle
               </button>
 
               <button
@@ -342,6 +333,27 @@ function App() {
               </button>
             </div>
           </div>
+          <span className={isRunning ? "inline-block" : "hidden"}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="icon icon-tabler icons-tabler-outline icon-tabler-hourglass-empty inline-block w-10 z-10 animate-wheel"
+            >
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z" />
+              <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z" />
+            </svg>
+            Time :{" "}
+            <span className="font-bold text-blue-500 text-2xl">{time}</span>{" "}
+            seconds
+          </span>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 py-20">
             {cards &&

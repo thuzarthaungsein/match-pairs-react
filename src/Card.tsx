@@ -36,12 +36,13 @@ const Card = ({
   }, [currentType]);
 
   return (
-    <div className="card w-full h-full">
-      <div className={flipped ? "flipped" : ""}>
+    <div className="card w-full h-full" draggable="false">
+      <div className={flipped ? "flipped" : ""} draggable="false">
         <img
           src={card.src}
           alt=""
           className="object-contain rounded-lg w-full h-full front"
+          draggable="false"
         />
 
         <img
@@ -49,6 +50,7 @@ const Card = ({
           alt=""
           className="object-contain rounded-lg w-full h-full cover drop-shadow"
           onClick={cardClick}
+          draggable="false"
         />
       </div>
     </div>
